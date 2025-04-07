@@ -13,6 +13,11 @@ header {
   background: #e4f5ec;
 }
 
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
 header h1 {
   font-size: 48px;
   margin-bottom: 10px;
