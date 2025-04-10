@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join the Waitlist – Zencierge</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+    </div>
+  </nav>
+
+  <!-- Waitlist Hero -->
+  <section class="hero">
+    <h1>Be the First to Experience Zencierge ✨</h1>
+    <p>We’re building something calm, kind, and powerful. Drop your email to stay in the loop.</p>
+  </section>
+
+  <!-- Waitlist Form -->
+  <section class="about">
+    <form action="https://formspree.io/f/manelgwv" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <input type="hidden" name="_redirect" value="https://khushi40453.github.io/zencierge/thankyou/index.html">
+      <button type="submit">Join Waitlist</button>
+    </form>
+    <p style="margin-top: 1rem;">No spam, just soulful updates 🧘‍♀️</p>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💜 by Khushi & Saheli</p>
+  </footer>
+
+</body>
+</html>

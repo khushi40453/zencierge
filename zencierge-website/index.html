@@ -1,61 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zencierge – Your Calm Companion</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zencierge – Your AI Wellness Companion</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <img src="logo.png" alt="Zencierge Logo" class="logo" />
-    <h1>Zencierge</h1>
-    <p>Your calmest companion in the chaos.</p>
-    <a href="#join" class="cta-button">Get Early Access</a>
-  </header>
 
-  <section>
-    <h2>Why Zencierge?</h2>
-    <p>Zencierge is your personal AI wellness coach — here to listen, guide, and help you grow. Thoughtful. Personal. Always by your side.</p>
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+  
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+      <a href="/features/index.html">Features</a>
+      <a href="/mood/index.html">Mood Journal</a>
+      <a href="/journal/index.html">Entries</a>
+      <a href="/gratitude/index.html">Gratitude Wall</a>
+      <a href="/affirmation/index.html">Affirmation Garden</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Zencierge 🌿</h1>
+    <p>Your calm, kind, and motivating AI wellness companion — for individuals, founders, and startups.</p>
+    <div class="hero-buttons">
+      <a href="/mirror/index.html" class="btn">Try Mirror</a>
+      <a href="/waitlist/index.html" class="btn secondary">Join Waitlist</a>
+    </div>
   </section>
 
-  <section>
-    <h2>What Zencierge Does</h2>
-    <ul>
-      <li><strong>Calm Conversations:</strong> Talk to an AI that actually listens.</li>
-      <li><strong>Daily Gentle Nudges:</strong> Mindful reminders and tips.</li>
-      <li><strong>Micro Habits Builder:</strong> Build habits without burnout.</li>
-      <li><strong>Startup Mode:</strong> Wellness tools for busy founders.</li>
-    </ul>
+  <!-- About Section -->
+  <section class="about fade-in" style="transition-delay: 0.3s;">
+    <h2>✨ What is Zencierge?</h2>
+    <p>
+      Zencierge blends artificial intelligence with emotional intelligence.  
+      We’re building mindful tools to support your mental clarity, productivity, and personal growth.
+    </p>
   </section>
 
-  <section id="join">
-    <h2>Join the Calm Movement</h2>
-    <p>Be the first to know when Zencierge goes live. Join our waitlist and walk with us on this mindful journey.</p>
-    <form action="https://formspree.io/f/mayvlzlo" method="POST">
-      <input type="email" name="email" placeholder="Your email" required />
-      <button type="submit">Join Waitlist</button>
-    </form>
-  </section>
-
- <section class="about">
-  <h2>Why Zencierge?</h2>
-  <p>Zencierge is your personal AI wellness guide, always here to gently realign you with peace, purpose, and clarity. Whether you're a student, startup founder, or simply human – Zencierge meets you where you are.</p>
- </section>
-
-<section class="waitlist">
-  <h2>Be the First to Try</h2>
-  <form>
-    <input type="email" placeholder="Enter your email" required>
-    <button type="submit">Join Waitlist</button>
-  </form>
-</section>
-
-
+  <!-- Footer -->
   <footer>
-    <p>Made with calm, code & care 💚 | Zencierge © 2025</p>
+    <p>Made with 💜 by Khushi & Saheli</p>
   </footer>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+  
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+  
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+  
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+
 </body>
 </html>

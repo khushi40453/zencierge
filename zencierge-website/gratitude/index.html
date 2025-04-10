@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gratitude Wall – Zencierge</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+      <a href="/features/index.html">Features</a>
+      <a href="/mood/index.html">Mood Journal</a>
+      <a href="/journal/index.html">Entries</a>
+      <a href="/gratitude/index.html">Gratitude Wall</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Gratitude Wall 🌼</h1>
+    <p>Celebrate every little thing that warms your heart. Let’s grow this garden together.</p>
+  </section>
+
+  <!-- Gratitude Form -->
+  <section class="about">
+    <form id="gratitude-form">
+      <input type="text" id="gratitude-input" placeholder="I'm grateful for..." required>
+      <button type="submit">Add to Wall</button>
+    </form>
+  </section>
+
+  <!-- Gratitude Entries -->
+  <section class="about" id="wall">
+    <h2>Your Gratitude Garden 🌷</h2>
+    <div id="gratitude-entries"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💜 by Khushi & Saheli</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById('gratitude-form');
+    const input = document.getElementById('gratitude-input');
+    const wall = document.getElementById('gratitude-entries');
+
+    const updateWall = () => {
+      wall.innerHTML = '';
+      const entries = JSON.parse(localStorage.getItem('gratitudeList')) || [];
+
+      if (entries.length === 0) {
+        wall.innerHTML = '<p>Nothing on your wall yet 🌱</p>';
+      } else {
+        entries.reverse().forEach(entry => {
+          const div = document.createElement('div');
+          div.className = 'gratitude-card';
+          div.innerHTML = `
+            <p>🌟 ${entry.text}</p>
+            <small><em>${entry.date}</em></small>
+          `;
+          wall.appendChild(div);
+        });
+      }
+    };
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+
+      const date = new Date().toLocaleString();
+      const entry = { text, date };
+
+      let entries = JSON.parse(localStorage.getItem('gratitudeList')) || [];
+      entries.push(entry);
+      localStorage.setItem('gratitudeList', JSON.stringify(entries));
+
+      input.value = '';
+      updateWall();
+    });
+
+    updateWall();
+  </script>
+
+  <!-- Style -->
+  <style>
+    .gratitude-card {
+      background-color: #fffdf4;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-left: 5px solid #ffd700;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+  </style>
+
+</body>
+</html>

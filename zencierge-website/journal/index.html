@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Mood Journal – Zencierge</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+      <a href="/features/index.html">Features</a>
+      <a href="/mood/index.html">Mood Journal</a>
+      <a href="/journal/index.html">Entries</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>My Mood Journal 📔</h1>
+    <p>Here’s a beautiful look at your emotional journey. Every check-in counts.</p>
+  </section>
+
+  <!-- Journal Entries -->
+  <section class="about" id="entries-section">
+    <div id="entries"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💜 by Khushi & Saheli</p>
+  </footer>
+
+  <!-- JavaScript to display entries -->
+  <script>
+    const entriesContainer = document.getElementById('entries');
+    const moodIcons = {
+      happy: '😊',
+      calm: '😌',
+      anxious: '😰',
+      sad: '😢',
+      angry: '😠',
+      excited: '🤩',
+      tired: '🥱'
+    };
+
+    const entries = JSON.parse(localStorage.getItem('moodEntries')) || [];
+
+    if (entries.length === 0) {
+      entriesContainer.innerHTML = "<p>You haven’t logged any moods yet 🌱</p>";
+    } else {
+      entries.reverse().forEach(entry => {
+        const div = document.createElement('div');
+        div.className = 'entry-card';
+        div.innerHTML = `
+          <h3>${moodIcons[entry.mood] || ''} ${entry.mood.charAt(0).toUpperCase() + entry.mood.slice(1)}</h3>
+          <p><em>${entry.date}</em></p>
+          <p>${entry.notes || 'No notes added.'}</p>
+        `;
+        entriesContainer.appendChild(div);
+      });
+    }
+  </script>
+
+  <style>
+    .entry-card {
+      background-color: #f6f5ff;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+  </style>
+
+</body>
+</html>

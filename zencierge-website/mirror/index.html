@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zencierge Mirror</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+<div class="bubbles-container">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<body>
+  <nav style="background-color: #f8f9fa; padding: 1rem; display: flex; justify-content: space-between; align-items: center; font-family: sans-serif;">
+    <div style="font-weight: bold; font-size: 1.2rem;">
+      <a href="/" style="text-decoration: none; color: #4A4A4A;">Zencierge</a>
+    </div>
+    <div style="display: flex; gap: 1rem;">
+      <a href="/index.html" style="text-decoration: none; color: #4A4A4A;">Home</a>
+      <a href="/mirror/index.html" style="text-decoration: none; color: #4A4A4A;">Mirror</a>
+      <a href="/waitlist/index.html" style="text-decoration: none; color: #4A4A4A;">Waitlist</a>
+      <!-- Add more as you create pages -->
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Zencierge Mirror</h1>
+    <p class="subtitle">Reflect. Breathe. Begin again.</p>
+
+    <div class="mirror-box">
+      <h2>🪞 How are you feeling today?</h2>
+      <textarea placeholder="Write whatever’s on your mind..."></textarea>
+      <button onclick="showMessage()">Reflect with Zencierge</button>
+      <div id="response" class="response-box"></div>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const text = document.querySelector("textarea").value.trim();
+      const responseBox = document.getElementById("response");
+      if (!text) {
+        responseBox.innerText = "🌿 Take a moment. Write something, anything. I’m here.";
+      } else {
+        responseBox.innerText = "💜 Thank you for sharing. You’re doing better than you think. Keep going.";
+      }
+    }
+  </script>
+</body>
+</html>

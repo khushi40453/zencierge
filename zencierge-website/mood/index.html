@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mood Tracker – Zencierge</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+      <a href="/features/index.html">Features</a>
+      <a href="/mood/index.html">Mood Journal</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>How are you feeling today? 🌤️</h1>
+    <p>Check in with your heart. Track your moods, honor your feelings, and start noticing patterns that matter.</p>
+  </section>
+
+  <!-- Mood Tracker Form -->
+  <section class="about">
+    <form class="mood-form">
+      <label for="mood">Your Mood Today:</label>
+      <select id="mood" name="mood" required>
+        <option value="">Choose one</option>
+        <option value="happy">😊 Happy</option>
+        <option value="calm">😌 Calm</option>
+        <option value="anxious">😰 Anxious</option>
+        <option value="sad">😢 Sad</option>
+        <option value="angry">😠 Angry</option>
+        <option value="excited">🤩 Excited</option>
+        <option value="tired">🥱 Tired</option>
+      </select>
+
+      <label for="notes">What’s on your mind?</label>
+      <textarea id="notes" name="notes" rows="5" placeholder="Write freely…"></textarea>
+
+      <button type="submit">Save Entry</button>
+    </form>
+
+    <p style="margin-top: 1.5rem; font-style: italic;">Your emotions are valid. Thanks for checking in 🌱</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💜 by Khushi & Saheli</p>
+  </footer>
+
+  <script>
+    const form = document.querySelector('.mood-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      const mood = form.mood.value;
+      const notes = form.notes.value;
+      const date = new Date().toLocaleString();
+  
+      const entry = { mood, notes, date };
+  
+      let entries = JSON.parse(localStorage.getItem('moodEntries')) || [];
+      entries.push(entry);
+      localStorage.setItem('moodEntries', JSON.stringify(entries));
+  
+      alert('Your mood has been lovingly saved 🌸');
+      form.reset();
+    });
+  </script>
+  
+
+</body>
+</html>

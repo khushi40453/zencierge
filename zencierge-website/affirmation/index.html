@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Affirmation Garden – Zencierge</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <a href="/">Zencierge</a>
+    </div>
+    <div class="nav-right">
+      <a href="/index.html">Home</a>
+      <a href="/mirror/index.html">Mirror</a>
+      <a href="/waitlist/index.html">Waitlist</a>
+      <a href="/features/index.html">Features</a>
+      <a href="/mood/index.html">Mood Journal</a>
+      <a href="/journal/index.html">Entries</a>
+      <a href="/gratitude/index.html">Gratitude Wall</a>
+      <a href="/affirmation/index.html">Affirmation Garden</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Affirmation Garden 🌸</h1>
+    <p>Click below and let your soul bloom with love, power, and peace.</p>
+  </section>
+
+  <!-- Affirmation Section -->
+  <section class="about" style="text-align: center;">
+    <div id="affirmation" style="font-size: 1.5rem; margin-bottom: 2rem;"></div>
+    <button onclick="showAffirmation()">🌼 Give Me an Affirmation</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with 💜 by Khushi & Saheli</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const affirmations = [
+      "I am enough, just as I am.",
+      "I trust the timing of my life.",
+      "My presence is my power.",
+      "I radiate love, joy, and gratitude.",
+      "I honor my feelings and trust my intuition.",
+      "Every step I take is progress.",
+      "I attract only peace and positivity.",
+      "I am growing at my own pace, and that’s okay.",
+      "The universe supports my dreams.",
+      "I am proud of how far I’ve come."
+    ];
+
+    function showAffirmation() {
+      const random = affirmations[Math.floor(Math.random() * affirmations.length)];
+      document.getElementById("affirmation").textContent = `"${random}"`;
+    }
+
+    // Show one by default when the page loads
+    window.onload = showAffirmation;
+  </script>
+
+</body>
+</html>
